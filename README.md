@@ -1,2 +1,2 @@
 # NYU-Big-Data-Science
-This is NYU BDS course
+This is my project of NYU course "Big Data Science"

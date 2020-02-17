@@ -101,8 +101,9 @@ train_df['distance'] = sphere_dist(train_df['pickup_latitude'], train_df['pickup
                                    train_df['dropoff_latitude'], train_df['dropoff_longitude'])
 
 # model training
-dropp_attr={'key','pickup_datetime','pickup_latitude','pickup_longitude','dropoff_latitude','dropoff_longitude'}
+dropp_attr={'key','pickup_datetime','fare_amount'}
 features=[c for c in train_df.columns if c not in dropp_attr]
+print(features)
 train_x,test_x,train_y,test_y=train_test_split(train_df[features],train_df['fare_amount'],test_size=0.2)
 
 RF=RandomForestRegressor()

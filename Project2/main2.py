@@ -67,6 +67,8 @@ def add_datetime_info(dataset):
     dataset['month'] = dataset.pickup_datetime.dt.month
     dataset['weekday'] = dataset.pickup_datetime.dt.weekday
     dataset['year'] = dataset.pickup_datetime.dt.year
+    dataset['is_weekend'] = (dataset['weekday']>=5).astype(float)
+    dataset['is_holyday'] = dataset.apply(lambda row: 1 if (row['month']==1 and row['day']==1) or (row['month']==7 and row['day']==4) or (row['month']==11 and row['day']==11) or (row['month']==12 and row['day']==25) or (row['month']==1 and row['day'] >= 15 and row['day'] <= 21 and row['weekday'] == 0) or (row['month']==2 and row['day'] >= 15 and row['day'] <= 21 and row['weekday'] == 0) or (row['month']==5 and row['day'] >= 25 and row['day'] <= 31 and row['weekday'] == 0) or (row['month']==9 and row['day'] >= 1 and row['day'] <= 7 and row['weekday'] == 0) or (row['month']==10 and row['day'] >= 8 and row['day'] <= 14 and row['weekday'] == 0) or (row['month']==11 and row['day'] >= 22 and row['day'] <= 28 and row['weekday'] == 3) else 0, axis=1)
 
     return dataset
 
@@ -154,6 +156,17 @@ Prediction=Prediction2
 # Prediction=0*Prediction1+1*Prediction2+0*Prediction3
 # print(r2_score(test_y,Prediction))
 
+# feature importance
+importance=list(zip(train_x.columns,XGB.feature_importances_))
+df_score=pd.DataFrame(importance,columns=['feature', 'fscore'])
+df_score['fscore']=df_score['fscore']/df_score['fscore'].sum()
+df_score.sort_values(by=['fscore'], ascending=True,inplace=True)
+plt.figure()
+df_score.plot(kind='barh', x='feature', y='fscore', legend=False, figsize=(6, 10))
+plt.title('XGBoost Feature Importance')
+plt.xlabel('relative importance')
+plt.show()
+
 
 # performance visualization
 # error=Prediction-test_y
@@ -170,5 +183,5 @@ Prediction=Prediction2
 
 
 # prediction output
-submission=pd.DataFrame({'id':test_df.id,'trip_duration':Prediction})
-submission.to_csv('submission.csv',index=False)
+# submission=pd.DataFrame({'id':test_df.id,'trip_duration':Prediction})
+# submission.to_csv('submission.csv',index=False)

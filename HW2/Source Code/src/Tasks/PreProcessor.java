@@ -1,12 +1,14 @@
 package Tasks;
 import java.io.*;
 import java.util.*;
-
+import Utils.Ngrams;
 import edu.stanford.nlp.simple.*;
 
 public class PreProcessor {
 
     public List<File> files = new ArrayList<>();
+    public static int NgramsThreshold = 3;
+
 
     public Set<String> getStopWords() throws IOException {
         Set<String> stopWords = new HashSet<>();
@@ -58,12 +60,12 @@ public class PreProcessor {
     }
 
     // 3 Apply named-entity extraction (NER). (Connect words with same tag as 1 word)
-    // return documents after NER, List<List<Sentence>>
-    public List<List<Sentence>> NER(List<List<Sentence>> documents){
-        List<List<Sentence>> new_documents = new ArrayList<>();
+    // return documents after NER, List<List<String>>
+    public List<List<String>> NER(List<List<Sentence>> documents){
+        List<List<String>> new_documents = new ArrayList<>();
 
         for (List<Sentence> doc: documents){
-            List<Sentence> newDoc = new ArrayList<>();
+            List<String> newDoc = new ArrayList<>();
             for (Sentence sentence: doc){
                 List<String> nerTags = sentence.nerTags();
                 List<String> words = sentence.words();
@@ -107,22 +109,72 @@ public class PreProcessor {
                         default:
                             break;
                     }
-                    newWords.add(newWord);
+                    newDoc.add(newWord);
                 }
-                newDoc.add(new Sentence(newWords));
             }
             new_documents.add(newDoc);
         }
         return new_documents;
     }
 
+    public List<Ngrams> calNgrams(int N, int threshold, List<String> TotalWordDic){
+        Map<Ngrams,Integer> countNgrams = new HashMap<>();
+        List<Ngrams> validNgrams = new ArrayList<>();
+        for (int i=0;i<=TotalWordDic.size()-N;i++){
+            Ngrams curNgram = new Ngrams(TotalWordDic.subList(i,i+N));
+            countNgrams.put(curNgram,countNgrams.getOrDefault(curNgram,0)+1);
+        }
+        for (Ngrams ngrams: countNgrams.keySet()){
+            if (countNgrams.get(ngrams)>=threshold){
+                validNgrams.add(ngrams);
+            }
+        }
+        return validNgrams;
+    }
 
-    public List<List<Sentence>> getNewDocument(List<File> loadfiles) throws IOException {
+    // 4 Use a sliding window approach to merge remaining phrases that belong together.
+    public List<List<String>> mergeNgrams(List<List<String>> NERdocuments){
+
+        List<String> TotalWordDic = new ArrayList<>();
+        for (List<String> doc:NERdocuments){
+            TotalWordDic.addAll(doc);
+        }
+
+        // calculate 2Ngrams, 3Ngrams, 4Ngrams
+        List<Ngrams> ngramsList2 = calNgrams(2,NgramsThreshold,TotalWordDic);
+        List<Ngrams> ngramsList3 = calNgrams(3,NgramsThreshold,TotalWordDic);
+        List<Ngrams> ngramsList4 = calNgrams(4,NgramsThreshold,TotalWordDic);
+
+        // connect all Ngrams in documents
+        List<List<String>> wordBags = new ArrayList<>();
+        for (List<String> doc: NERdocuments){
+            String S = doc.toString().replaceAll("[\\[\\]\\,]", "");
+            // replace from large to samll Ngrams
+            for (Ngrams ngrams: ngramsList4){
+                S = S.replaceAll(ngrams.toString(),ngrams.toConnect());
+            }
+            for (Ngrams ngrams: ngramsList3){
+                S = S.replaceAll(ngrams.toString(),ngrams.toConnect());
+            }
+            for (Ngrams ngrams: ngramsList2){
+                S = S.replaceAll(ngrams.toString(),ngrams.toConnect());
+            }
+            List<String> wordBag = new ArrayList<>();
+            for (String s : S.split(" ")){
+                wordBag.add(s.toLowerCase());
+            }
+            wordBags.add(wordBag);
+        }
+        return wordBags;
+    }
+
+    public List<List<String>> getNewDocument(List<File> loadfiles) throws IOException {
         files = loadfiles;
         Set<String> stopWords = getStopWords();
         List<List<Sentence>> documents = filterStopWords(stopWords);
-        List<List<Sentence>> NERdocuments = NER(documents);
-        return NERdocuments;
+        List<List<String>> NERdocuments = NER(documents);
+        List<List<String>> wordBags = mergeNgrams(NERdocuments);
+        return wordBags;
 
     }
 }

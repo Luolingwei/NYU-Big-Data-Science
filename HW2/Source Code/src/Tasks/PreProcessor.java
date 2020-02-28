@@ -168,7 +168,7 @@ public class PreProcessor {
         return wordBags;
     }
 
-    public List<List<String>> getNewDocument(List<File> loadfiles) throws IOException {
+    public List<List<String>> getWordBags(List<File> loadfiles) throws IOException {
         files = loadfiles;
         Set<String> stopWords = getStopWords();
         List<List<Sentence>> documents = filterStopWords(stopWords);

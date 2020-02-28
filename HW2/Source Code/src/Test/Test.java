@@ -1,5 +1,6 @@
 package Test;
 
+import Tasks.DocumentTermMatrix;
 import Tasks.Loader;
 import Tasks.PreProcessor;
 
@@ -16,7 +17,9 @@ public class Test {
         String rootPath = "/Users/luolingwei/Desktop/Program/Classes/BDS/NYU-Big-Data-Science/HW2/datasetTest";
         List<File> files = loader.getFiles(rootPath);
         PreProcessor preProcessor = new PreProcessor();
-        List<List<String>> wordBags = preProcessor.getNewDocument(files);
-        System.out.println("Success");
+        List<List<String>> wordBags = preProcessor.getWordBags(files);
+        DocumentTermMatrix documentTermMatrix = new DocumentTermMatrix();
+        documentTermMatrix.calTfIdf(wordBags);
+        List<String> keyWords = documentTermMatrix.getTopKeywords(0,10);
     }
 }

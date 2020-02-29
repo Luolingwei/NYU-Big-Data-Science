@@ -1,12 +1,9 @@
 package Test;
 
 import Cluster.Clustering;
-import Cluster.Kmeans;
 import Cluster.KmeansPP;
 import Similarity.*;
-import Tasks.DocumentTermMatrix;
-import Tasks.Loader;
-import Tasks.PreProcessor;
+import Tasks.*;
 import Utils.MatrixOperater;
 
 import java.io.File;
@@ -23,17 +20,23 @@ public class Test {
     public static List<String> fileNames;
     public static List<List<String>> keyWordList = new ArrayList<>();
 
-    public static void printClusterInfo (int k) {
+    public static void clusterSummarize (int k) {
         String files = "";
-        Set<String> clusterKeyWords = new HashSet<>();
+        Set<String> clusterKeyWords = new HashSet<>(); // Top KeyWords appeared in this cluster more than once
+        Set<String> KeyWordsOnce = new HashSet<>(); // Top KeyWords appeared once in this cluster before
         System.out.println("Cluster " + (k + 1) + ":");
         for (int i = 0; i < clusters.length; i++) {
             if (clusters[i]==k) {
                 files += "\t\t" + fileNames.get(i) + "\n";
-                clusterKeyWords.addAll(keyWordList.get(i));
+                for (String word: keyWordList.get(i)){
+                    if (KeyWordsOnce.contains(word))
+                        clusterKeyWords.add(word);
+                    else
+                        KeyWordsOnce.add(word);
+                }
            }
         }
-        System.out.println("\tKeywords found in this cluster:");
+        System.out.println("\tFequent keywords found in this cluster:");
         System.out.println("\t\t" + clusterKeyWords);
         System.out.println("\tFiles in the cluster:");
         System.out.print(files);
@@ -64,10 +67,24 @@ public class Test {
         Clustering model = new KmeansPP(normalizedTfIdf,new Cosine(),3);
         clusters = model.getClusters();
         for (int i = 0; i < k; i++) {
-            printClusterInfo(i);
+            clusterSummarize(i);
         }
-        // if measure == Eru, normalize matrix
 
+        // SVD and Visualize
+        double[][] centers = model.getCenters();
+        double[][] normalizedCenters = new double[centers.length][centers[0].length];
+        for (int i = 0; i < centers.length; i++) {
+            normalizedCenters[i] = matrixOperater.normalize(centers[i]);
+        }
+
+        double[][] reducedTfIdf = SVD.reduce(normalizedTfIdf,2);
+        double[][] reducedCenters = SVD.reduce(normalizedCenters, 2);
+
+
+        Visualization TfIdfPlot = new Visualization("Tf-Idf Distribution",reducedTfIdf);
+        Visualization centersPlot = new Visualization("Clustered Tf-Idf",reducedTfIdf, reducedCenters, clusters);
+        TfIdfPlot.createPlot();
+        centersPlot.createPlot();
 
         System.out.println("Success");
     }

@@ -20,6 +20,7 @@ public class DocumentTermMatrix {
         for (List<String> wordBag : wordBags) {
             allWordsSet.addAll(wordBag);
         }
+        // words in all wordBags distribute evenly
         terms = new ArrayList<>(allWordsSet);
         termsNum = terms.size();
         // calculate DocTerm map, termDoc Map
@@ -29,6 +30,7 @@ public class DocumentTermMatrix {
             List<String> wordBag = wordBags.get(i);
             Set<String> wordBagSet = new HashSet<>(wordBag);
             for (String word : wordBag) {
+                // each word in a wordBag is mixed in allWordSet
                 count[i][terms.indexOf(word)]++;
             }
             for (String uniqueWord: wordBagSet){
@@ -50,12 +52,11 @@ public class DocumentTermMatrix {
     public List<String> getTopKeywords (int docID, int n) {
         if (docID >= wordBags.size()) return null;
         List<Tuple> tupleList = new ArrayList<>();
-        List<String> wordBag = wordBags.get(docID);
+        Set<String> wordBag = new HashSet<>(wordBags.get(docID));
         List<String> keyWords = new ArrayList<>();
-        for (int i = 0; i < wordBag.size(); i++) {
-            int termID = terms.indexOf(wordBag.get(i));
-            Tuple tuple = new Tuple(termID, tf_idf[docID][termID]);
-            if (!tupleList.contains(tuple)) tupleList.add(tuple);
+        for (String word: wordBag) {
+            int WordId = terms.indexOf(word);
+            tupleList.add(new Tuple(WordId, tf_idf[docID][WordId]));
         }
         Collections.sort(tupleList, Collections.reverseOrder());
         // no more than size of tupleList

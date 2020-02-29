@@ -10,12 +10,14 @@ import java.io.InputStreamReader;
 public class Loader {
 
     public List<File> files = new ArrayList<>();
-
+    public List<String> fileNames = new ArrayList<>();
 
     public void getTxtFiles(File file){
         if (!file.isDirectory()){
-            if (file.toString().endsWith(".txt")){
+            String filePath = file.toString();
+            if (filePath.endsWith(".txt")){
                 files.add(file);
+                fileNames.add(filePath.substring(filePath.length()-16));
             }
         } else {
             for (File subfile: file.listFiles()){

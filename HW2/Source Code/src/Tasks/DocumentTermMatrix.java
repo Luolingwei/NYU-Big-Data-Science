@@ -6,74 +6,68 @@ import java.util.*;
 
 public class DocumentTermMatrix {
 
-    public static List<List<String>> terms = new ArrayList<>();
-    public static int[][] count;
-    public static double[][] tf_idf;
+    private int docNum, termsNum;
+    private List<List<String>> wordBags;
+    private List<String> terms;
+    private int[][] count;
+    private double[][] tf_idf;
 
-    public void calTfIdf(List<List<String>> wordBags){
-        // initialize matrix
-        Set<String> TotalWords = new HashSet<>();
-        for (List<String> wordBag:wordBags){
-            TotalWords.addAll(wordBag);
+    public void calTfIdf (List<List<String>> wordBags) {
+        this.wordBags = wordBags;
+        docNum = wordBags.size();
+        // add all words to set
+        Set<String> allWordsSet = new HashSet<>();
+        for (List<String> wordBag : wordBags) {
+            allWordsSet.addAll(wordBag);
         }
-        int docN=wordBags.size(),termN=TotalWords.size();
-        count = new int[docN][termN];
-        tf_idf = new double[docN][termN];
-
-        // calculate docTermN, termDocN map
+        terms = new ArrayList<>(allWordsSet);
+        termsNum = terms.size();
+        // calculate DocTerm map, termDoc Map
+        count = new int[docNum][termsNum];
         Map<String, Integer> termDocN= new HashMap<>();
-        for (int i=0;i<docN;i++){
+        for (int i = 0; i < docNum; i++) {
             List<String> wordBag = wordBags.get(i);
-            Map<String, Integer> docTermN= new HashMap<>();
-            for (String word: wordBag){
-                docTermN.put(word,docTermN.getOrDefault(word,0)+1);
+            Set<String> wordBagSet = new HashSet<>(wordBag);
+            for (String word : wordBag) {
+                count[i][terms.indexOf(word)]++;
             }
-            List<String> words = new ArrayList(docTermN.keySet());
-            int j=0;
-            for (;j<words.size();j++){
-                String curword = words.get(j);
-                int curwordN = docTermN.get(curword);
-                termDocN.put(curword,termDocN.getOrDefault(curword,0)+1);
-                count[i][j] = curwordN;
-            }
-            terms.add(words);
-        }
-
-        // calculate tf-idf
-        for (int i=0;i<docN;i++){
-            for (int j=0;j<termN;j++){
-                if (j< terms.get(i).size()){
-                    double tf = (double) count[i][j]/wordBags.get(i).size();
-                    double idf = Math.log((double) wordBags.size()/termDocN.get(terms.get(i).get(j)));
-                    tf_idf[i][j] = tf*idf;
-                } else {
-                    tf_idf[i][j] = 0.0;
-                }
+            for (String uniqueWord: wordBagSet){
+                termDocN.put(uniqueWord,termDocN.getOrDefault(uniqueWord,0)+1);
             }
         }
 
-        System.out.println("Success");
-
+        tf_idf = new double[docNum][termsNum];
+        for (int i = 0; i < docNum; i++) {
+            for (int j = 0; j < termsNum; j++) {
+                double tf = (double) count[i][j] / wordBags.get(i).size();
+                double idf = Math.log((double) wordBags.size()/termDocN.get(terms.get(j)));
+                tf_idf[i][j] = tf*idf;
+            }
+        }
     }
 
-    public List<String> getTopKeywords(int docID, int topN){
-        if (docID>tf_idf.length){
-            return null;
-        }
-        // if topN exceeds unique word number in doc, only extract all words.
-        topN = Math.min(topN, terms.get(docID).size());
-        List<String> words = terms.get(docID);
+
+    public List<String> getTopKeywords (int docID, int n) {
+        if (docID >= wordBags.size()) return null;
         List<Tuple> tupleList = new ArrayList<>();
-        for (int i=0;i<words.size();i++){
-            tupleList.add(new Tuple(words.get(i),tf_idf[docID][i]));
-        }
-        Collections.sort(tupleList,Collections.reverseOrder());
+        List<String> wordBag = wordBags.get(docID);
         List<String> keyWords = new ArrayList<>();
-        for (int i=0; i<topN; i++){
-            keyWords.add(tupleList.get(i).Word);
+        for (int i = 0; i < wordBag.size(); i++) {
+            int termID = terms.indexOf(wordBag.get(i));
+            Tuple tuple = new Tuple(termID, tf_idf[docID][termID]);
+            if (!tupleList.contains(tuple)) tupleList.add(tuple);
+        }
+        Collections.sort(tupleList, Collections.reverseOrder());
+        // no more than size of tupleList
+        int m = Math.min(n,tupleList.size());
+        for (int j=0;j<m;j++) {
+            keyWords.add(terms.get(tupleList.get(j).WordId));
         }
         return keyWords;
     }
 
+    public double[][] getTf_idf(){
+        return tf_idf;
+    }
 
 }

@@ -82,10 +82,10 @@ public class Visualization {
         return dataset;
     }
 
-    public void createPlot () throws IOException {
+    public void draw () throws IOException {
         chart = createChart(name);
-        ChartUtilities.saveChartAsPNG(new File(name + ".png"), chart, 1000, 600);
-        System.out.println("The generated chart has been saved as \"" + name + ".png\" in current path");
+        ChartUtilities.saveChartAsPNG(new File(name + ".png"), chart, 1000, 500);
+        System.out.println("\"" + name + ".png\" has been created in current path");
     }
 
 }

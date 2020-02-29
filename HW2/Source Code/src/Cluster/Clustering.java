@@ -7,17 +7,17 @@ import java.util.Arrays;
 
 public abstract class Clustering {
 
+    public int k;
     public double[][] matrix;
     public Similarity similarity;
-    public int k;
     public int[] clusters;
     public double[][] centers;
 
 
     public Clustering (double[][] matrix, Similarity similarity, int k) {
+        this.k = k;
         this.matrix = matrix;
         this.similarity = similarity;
-        this.k = k;
         this.clusters = new int[matrix.length];
         this.centers = new double[k][matrix[0].length];
         docluster();

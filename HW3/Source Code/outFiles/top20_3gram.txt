@@ -1,0 +1,23 @@
+
+Printing the top 20 most frequent 3-grams
+
+[to, go, to] : 8
+[i, have, to] : 8
+[I, feel, like] : 7
+[I, need, to] : 7
+[sorry, to, hear] : 7
+[is, going, to] : 6
+[to, hear, about] : 6
+[I, have, to] : 5
+[hear, about, your] : 5
+[., ., .] : 5
+[don't, want, to] : 5
+[I, don't, want] : 5
+[I, want, to] : 4
+[may, have, to] : 4
+[not, a, good] : 4
+[I, miss, my] : 4
+[I, hate, when] : 4
+[I, need, a] : 4
+[go, to, the] : 4
+[I, wish, I] : 4

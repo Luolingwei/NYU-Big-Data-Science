@@ -1,0 +1,23 @@
+
+Printing the top 20 most frequent 4-grams
+
+[to, hear, about, your] : 5
+[so, sorry, to, hear] : 4
+[I, don't, want, to] : 4
+[@stephenkruiser, I'm, so, sorry] : 3
+[Sorry, to, hear, about] : 3
+[I'm, so, sorry, to] : 3
+[the, 'feet', of, my] : 3
+[my, macbook, just, fell] : 3
+[going, to, have, a] : 3
+[of, my, macbook, just] : 3
+[sorry, to, hear, about] : 3
+['feet', of, my, macbook] : 3
+[that, the, 'feet', of] : 3
+[sad, that, the, 'feet'] : 3
+[sorry, to, hear, that.] : 3
+[macbook, just, fell, off] : 3
+[start.., waiting, for, the] : 2
+[have, an, assignment, to] : 2
+[to, be, like, this] : 2
+[No, fun, to, not] : 2

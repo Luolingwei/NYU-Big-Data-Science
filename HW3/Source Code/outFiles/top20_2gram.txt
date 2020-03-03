@@ -1,0 +1,23 @@
+
+Printing the top 20 most frequent 2-grams
+
+[in, the] : 30
+[have, to] : 25
+[for, the] : 23
+[going, to] : 23
+[I, don't] : 22
+[I, hate] : 19
+[I, was] : 19
+[i, have] : 18
+[I, am] : 18
+[on, the] : 18
+[to, the] : 17
+[to, be] : 17
+[want, to] : 16
+[to, go] : 16
+[to, get] : 16
+[of, the] : 16
+[at, the] : 16
+[I, have] : 15
+[to, hear] : 15
+[I, need] : 15

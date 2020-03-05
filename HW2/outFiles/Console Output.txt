@@ -9,51 +9,9 @@ Absolute path to the directory containing the documents to analyze (do Not inclu
 /Users/luolingwei/Desktop/Program/Classes/BDS/NYU-Big-Data-Science/HW2/dataset_3
 
 ==========================================================================
-Preprocessing Results
-==========================================================================
-Top 10 keywords in each document extracted by the Tf-Idf matrix:
-	C7/article08.txt	[abbey, mortgage, bank, claim, italian, prodi, press, cassaro, abbey_national, accuse]
-	C7/article05.txt	[mr._takenaka, loan, million_yen_approx, corporation, summer_house, asahi_bank, bank, fsa, financial, amount]
-	C7/article04.txt	[earthquake, participant, victim, taiwan, estimate, ministry_finance, cna, quake-affected, 5_percent, rate]
-	C7/article06.txt	[hike, construction, benchmark, loan, housing, ministry, home, percent, source, rise]
-	C7/article07.txt	[bank_raise, boj, fixed, fuji_bank, rate, major, bank_tokyo-mitsubishi, 2.40, 2.45, 2.30]
-	C7/article03.txt	[greater, 5, dream, bank, level, system, banking, premier, i, mortgage]
-	C7/article02.txt	[mortgage, prodi, 5_percent, recording, fundamental, sort, job, economy, i, agree]
-	C7/article01.txt	[cent, rate, loan, mortgage_loan, price_war, 9.75_cent, august, hongkong_bank, increase, customer]
-	C1/article08.txt	[ria-novosti, russia, correspondent, civil_aviation, flight_safety, civil, pavel_shevtsov, aleksandr_neradko, joint, civilian]
-	C1/article05.txt	[guideline, safety_guideline, yonhap, cup, security, airline, commercial, world, ministry, 11]
-	C1/article04.txt	[ground, grounding, tonga, pacific, airline, carrier, boeing-737, australia, royal_tongan_airline_safety_issues, isolate]
-	C1/article06.txt	[spare_part, investigation, suspect, investigator, gip, aircraft_part, tempio_pausania, mechanic, defense, charge]
-	C1/article07.txt	[air_china, route, pilot, dollar, training, yuan, million, study, u.s., engine]
-	C1/article03.txt	[police_force, liu_jianfeng, china, caac_public_security_bureau, formation, state_council, assign, plan, administration, domestic]
-	C1/article02.txt	[eat, pilot, belgian, pilot_association, belgium, social, sign, bca, book, duty_time]
-	C1/article01.txt	[civil_aeronautics, aerorepublica, jet, aviation, airline, colombian_airline, standard, certification, record_jet, fly]
-	C4/article08.txt	[le_figaro, glavany_i, mayenne, glavany, crisis, france, europe, slaughter, i, consumption]
-	C4/article05.txt	[meat, face, mission, itartass, tumen, warning, river, foot, dead, yalu]
-	C4/article04.txt	[campaign, dr., disease, veterinary, follow-up, recall, goat, successful, buffalo, removal]
-	C4/article06.txt	[graefe_zu_baringdorf, cap, health, agriculture, vigilance, president, european, reform, bse, export]
-	C4/article07.txt	[germany, crisis, agriculture, berlin, german, france, german_green, realization, summit, schroeder]
-	C4/article03.txt	[drug_vaccine, preventive_treatment, abbud, raw_material, abbas, livestock, iraq, import, organization, dr.]
-	C4/article02.txt	[village, pa, cattle, disease, area, bedouin, negev_galilee, minority, yirka, galilee]
-	C4/article01.txt	[greece, disease, spread, animal, veterinary, communicable, albania_turkey_macedonia, vestfold, ostfold, infected]
-
-==========================================================================
 Clustering Results
 ==========================================================================
 Cluster 1:
-	Files included in the cluster:
-		C7/article08.txt
-		C7/article05.txt
-		C7/article04.txt
-		C7/article06.txt
-		C7/article07.txt
-		C7/article03.txt
-		C7/article02.txt
-		C7/article01.txt
-	Fequent keywords found in this cluster:
-		[bank, loan, mortgage, rate, 5_percent, i, prodi]
-
-Cluster 2:
 	Files included in the cluster:
 		C4/article08.txt
 		C4/article05.txt
@@ -63,10 +21,10 @@ Cluster 2:
 		C4/article03.txt
 		C4/article02.txt
 		C4/article01.txt
-	Fequent keywords found in this cluster:
-		[agriculture, dr., disease, crisis, france, veterinary]
+	Top 10 Fequent keywords found in this cluster:
+		[area, face, disease, hoof_mouth, report, animal, outbreak, farmer, veterinary, hoof_mouth_disease]
 
-Cluster 3:
+Cluster 2:
 	Files included in the cluster:
 		C1/article08.txt
 		C1/article05.txt
@@ -76,8 +34,21 @@ Cluster 3:
 		C1/article03.txt
 		C1/article02.txt
 		C1/article01.txt
-	Fequent keywords found in this cluster:
-		[pilot, airline]
+	Top 10 Fequent keywords found in this cluster:
+		[flight, ensure, airline_safety, million, safety, service, aircraft, civil, company, airline]
+
+Cluster 3:
+	Files included in the cluster:
+		C7/article08.txt
+		C7/article05.txt
+		C7/article04.txt
+		C7/article06.txt
+		C7/article07.txt
+		C7/article03.txt
+		C7/article02.txt
+		C7/article01.txt
+	Top 10 Fequent keywords found in this cluster:
+		[bank, loan, mortgage, government, rate, mortgage_rate, i, rise, percent, home]
 
 
 ==========================================================================

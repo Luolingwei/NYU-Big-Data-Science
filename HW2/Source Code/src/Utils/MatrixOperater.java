@@ -3,7 +3,6 @@ package Utils;
 public class MatrixOperater {
 
     // normalize a vector to unit 1
-
     public double [] average (double [] vector, double base){
         double [] new_vector = new double[vector.length];
         for (int i=0;i<vector.length;i++){
@@ -32,6 +31,14 @@ public class MatrixOperater {
     public double [] normalize (double [] vector){
         double length = getLength(vector);
         return average(vector,length);
+    }
+
+    public double [][] normalizeMatrix(double [][] matrix){
+        double[][] outMatrix = new double[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            outMatrix[i] = normalize(matrix[i]);
+        }
+        return outMatrix;
     }
 
 }

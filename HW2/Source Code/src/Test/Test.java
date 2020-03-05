@@ -17,25 +17,21 @@ public class Test {
     public static List<String> fileNames;
     public static List<List<String>> keyWordList = new ArrayList<>();
 
-    public static void clusterSummarize (int k) {
+    public static void clusterSummarize (int k,  DocumentTermMatrix DTmatrix) {
         String files = "";
-        Set<String> clusterKeyWords = new HashSet<>(); // Top KeyWords appeared in this cluster more than once
-        Set<String> KeyWordsOnce = new HashSet<>(); // Top KeyWords appeared once in this cluster before
         System.out.println("Cluster " + (k + 1) + ":");
+        List<Integer> clusterNums = new ArrayList<>();
         for (int i = 0; i < clusters.length; i++) {
             if (clusters[i]==k) {
                 files += "\t\t" + fileNames.get(i) + "\n";
-                for (String word: keyWordList.get(i)){
-                    if (KeyWordsOnce.contains(word))
-                        clusterKeyWords.add(word);
-                    else
-                        KeyWordsOnce.add(word);
-                }
+                clusterNums.add(i);
            }
         }
+        // get keywords for each folder
+        Set<String> clusterKeyWords = DTmatrix.getTopKeywords(clusterNums,10);
         System.out.println("\tFiles included in the cluster:");
         System.out.print(files);
-        System.out.println("\tFequent keywords found in this cluster:");
+        System.out.println("\tTop 10 Fequent keywords found in this cluster:");
         System.out.println("\t\t" + clusterKeyWords);
         System.out.println();
     }
@@ -84,26 +80,11 @@ public class Test {
 
         System.out.println();
         System.out.println("==========================================================================");
-        System.out.println("Preprocessing Results");
-        System.out.println("==========================================================================");
-        System.out.println("Top 10 keywords in each document extracted by the Tf-Idf matrix:");
-
-        for (int i = 0; i < fileNames.size(); i++) {
-            List<String> keyWords = documentTermMatrix.getTopKeywords(i,10);
-            keyWordList.add(keyWords);
-            System.out.println("\t" + fileNames.get(i) + "\t" + keyWords);
-        }
-
-        System.out.println();
-        System.out.println("==========================================================================");
         System.out.println("Clustering Results");
         System.out.println("==========================================================================");
 
         double[][] matrix = documentTermMatrix.getTf_idf();
-        double[][] normalizedTfIdf = new double[matrix.length][matrix[0].length];
-        for (int i = 0; i < matrix.length; i++) {
-            normalizedTfIdf[i] = matrixOperater.normalize(matrix[i]);
-        }
+        double[][] normalizedTfIdf =matrixOperater.normalizeMatrix(matrix);
 
         Similarity similarity;
         Clustering model;
@@ -115,7 +96,7 @@ public class Test {
         clusters = model.getClusters();
         // print Cluster Summary
         for (int i = 0; i < k; i++) {
-            clusterSummarize(i);
+            clusterSummarize(i, documentTermMatrix);
         }
 
         System.out.println();
@@ -125,12 +106,10 @@ public class Test {
 
         // SVD
         double[][] centers = model.getCenters();
-        double[][] normalizedCenters = new double[centers.length][centers[0].length];
-        for (int i = 0; i < centers.length; i++) {
-            normalizedCenters[i] = matrixOperater.normalize(centers[i]);
-        }
-        double[][] reducedTfIdf = SVD.reduce(normalizedTfIdf,2);
-        double[][] reducedCenters = SVD.reduce(normalizedCenters, 2);
+        double[][] normalizedCenters = matrixOperater.normalizeMatrix(centers);
+
+        double[][] reducedTfIdf = matrixOperater.normalizeMatrix(SVD.reduce_SVD(normalizedTfIdf,2));
+        double[][] reducedCenters = matrixOperater.normalizeMatrix(SVD.reduce_SVD(normalizedCenters, 2));
 
         // Visualize
         Visualization TfIdfPlot = new Visualization("Tf-Idf Distribution",reducedTfIdf);

@@ -42,21 +42,33 @@ public class DocumentTermMatrix {
         for (int i = 0; i < docNum; i++) {
             for (int j = 0; j < termsNum; j++) {
                 double tf = (double) count[i][j] / wordBags.get(i).size();
-                double idf = Math.log((double) wordBags.size()/termDocN.get(terms.get(j)));
+                double idf = 0.0;
+                if (termDocN.get(terms.get(j))>3 && termDocN.get(terms.get(j))<18){ // filter out words too unique or too common
+                    idf = Math.log((double) wordBags.size()/termDocN.get(terms.get(j)));
+                }
                 tf_idf[i][j] = tf*idf;
             }
         }
     }
 
+    double[] getFolderTfIdf(List<Integer> docIDList){
+        double[] newTfIdf = new double[termsNum];
+        for (int id: docIDList){
+            for (int i=0;i<termsNum;i++){
+                newTfIdf[i]=newTfIdf[i]+tf_idf[id][i];
+            }
+        }
+        return newTfIdf;
+    }
 
-    public List<String> getTopKeywords (int docID, int n) {
-        if (docID >= wordBags.size()) return null;
+    public Set<String> getTopKeywords (List<Integer> docIDList, int n) {
         List<Tuple> tupleList = new ArrayList<>();
-        Set<String> wordBag = new HashSet<>(wordBags.get(docID));
-        List<String> keyWords = new ArrayList<>();
-        for (String word: wordBag) {
-            int WordId = terms.indexOf(word);
-            tupleList.add(new Tuple(WordId, tf_idf[docID][WordId]));
+        Set<String> keyWords = new HashSet<>();
+        double[] folderTfIdf = getFolderTfIdf(docIDList);
+        for (int i=0;i<termsNum;i++){
+            if (folderTfIdf[i]>0){
+                tupleList.add(new Tuple(i,folderTfIdf[i]));
+            }
         }
         Collections.sort(tupleList, Collections.reverseOrder());
         // no more than size of tupleList

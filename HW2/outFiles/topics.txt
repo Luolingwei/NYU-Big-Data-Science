@@ -1,7 +1,7 @@
-Frequent Key Topics for Each Folder:
+Topic found for Each Folder:
 
-	C1: [pilot, airline]
+	C1: [flight, ensure, airline_safety, million, safety, service, aircraft, civil, company, airline]
 
-	C4: [agriculture, dr., disease, crisis, france, veterinary]
+	C4: [area, face, disease, hoof_mouth, report, animal, outbreak, farmer, veterinary, hoof_mouth_disease]
 
-	C7: [bank, loan, mortgage, rate, 5_percent, i, prodi]
+	C7: [bank, loan, mortgage, government, rate, mortgage_rate, i, rise, percent, home]

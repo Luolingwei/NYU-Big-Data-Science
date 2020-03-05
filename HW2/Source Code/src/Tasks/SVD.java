@@ -1,11 +1,12 @@
 package Tasks;
 
+import Utils.MatrixOperater;
 import org.ejml.simple.*;
 
 public class SVD {
 
-    @SuppressWarnings("rawtypes")
-    public static double[][] reduce (double[][] matrix, int dimensions) {
+    public static double[][] reduce_SVD (double[][] matrix, int dimensions) {
+
         SimpleMatrix M = new SimpleMatrix(matrix);
         SimpleSVD s = M.svd();
         SimpleMatrix U = s.getU().extractMatrix(0, SimpleMatrix.END, 0, dimensions);
@@ -19,10 +20,6 @@ public class SVD {
                 outMatrix[i][j] = reducedMatrix.get(i, j);
             }
         }
-
         return outMatrix;
     }
-
-
-
 }

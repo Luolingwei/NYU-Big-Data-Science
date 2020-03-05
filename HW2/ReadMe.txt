@@ -3,9 +3,10 @@ Lingwei Luo(lingweiluo@nyu.edu)
 Sumitted Documents:
 
 	1. Source code: All .java files under /Source Code/src, they are submitted for your reference, Not for running the program. 
+
 	2. Dependency files: The program relies on file "stopwords.txt". It has been included in /Source Code/src.
 
-	3. "topics.txt": Frequent keywords extracted from each folder.
+	3. "topics.txt": keywords extracted for each folder.
 
 	4. Plots in Part2: "Tf-Idf Distribution.png", "Clustered Tf-Idf.png". The first one shows the distribution of reduced Tf-Idf matrix. The second one is the clustered Tf-Idf picture. They are included in /Plots
 

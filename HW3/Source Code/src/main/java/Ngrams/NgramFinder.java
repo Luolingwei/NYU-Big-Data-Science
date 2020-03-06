@@ -11,7 +11,6 @@ public class NgramFinder {
 
     public void calTopNgrams(int N, int topN, List<List<String>> Totaltext){
         Map<Ngrams,Integer> countNgrams = new HashMap<>();
-        List<Ngrams> validNgrams = new ArrayList<>();
         for (List<String> text: Totaltext){
             for (int i=0;i<=text.size()-N;i++){
                 List<String> subtext = text.subList(i,i+N);
@@ -43,19 +42,14 @@ public class NgramFinder {
     }
 
     // 4 Use a sliding window approach to merge remaining phrases that belong together.
-    public void outputTopNgrams(List<String> texts) throws FileNotFoundException {
-
-        List<List<String>> Totaltext = new ArrayList<>();
-        for (String sentence: texts){
-            Totaltext.add(Arrays.asList(sentence.split(" ")));
-        }
+    public void outputTopNgrams(List<List<String>> texts) throws FileNotFoundException {
 
         // calculate 1Ngrams, 2Ngrams, 3Ngrams, 4Ngrams
         for (int N: NgramsNumbers){
-            String filename = "outFiles/top20_" + N + "gram.txt";
+            String filename = "top20_" + N + "gram.txt";
             PrintStream fileOut = new PrintStream(filename);
             System.setOut(fileOut);
-            calTopNgrams(N,20,Totaltext);
+            calTopNgrams(N,20,texts);
             fileOut.close();
         }
     }

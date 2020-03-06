@@ -6,8 +6,7 @@ Printing the top 20 most frequent hashtags
 #FML : 1
 #24 : 1
 #gayforpeavy : 1
+#TTSC : 1
 #camerafail : 1
-#TTSC? : 1
 #itm : 1
 #therapyfail : 1
-#...We : 1

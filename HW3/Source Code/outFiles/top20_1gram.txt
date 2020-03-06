@@ -1,23 +1,23 @@
 
 Printing the top 20 most frequent 1-grams
 
-[I] : 401
-[to] : 361
-[the] : 312
-[a] : 212
-[my] : 212
-[and] : 184
-[i] : 179
-[is] : 172
-[in] : 141
-[for] : 135
-[it] : 113
+[I] : 406
+[to] : 364
+[the] : 314
+[my] : 215
+[a] : 213
+[and] : 191
+[i] : 184
+[is] : 173
+[in] : 147
+[for] : 137
+[it] : 137
+[you] : 121
 [of] : 112
-[you] : 96
-[so] : 94
+[me] : 106
+[so] : 97
+[that] : 92
 [have] : 88
-[was] : 86
-[that] : 83
-[I'm] : 83
-[me] : 82
-[but] : 81
+[was] : 88
+[but] : 87
+[I'm] : 85

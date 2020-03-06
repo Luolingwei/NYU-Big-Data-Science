@@ -7,20 +7,19 @@ import static java.util.stream.Collectors.toMap;
 
 public class Explorer {
 
-    public List<String> textList;
+    public List<List<String>> textList;
     public HashMap<String,Integer> HashTagCount = new HashMap<>();
     public HashMap<String,Integer> MentionCount = new HashMap<>();
 
 
-    public Explorer(List<String> texts){
+    public Explorer(List<List<String>> texts){
         this.textList = texts;
         collectHashMention();
     }
 
     public void collectHashMention(){
-        for (String text:textList){
-            String[] words = text.split(" ");
-            for (String word: words){
+        for (List<String> text:textList){
+            for (String word: text){
                 if (!word.isEmpty()){
                     if (word.charAt(0)=='#'){
                         HashTagCount.put(word,HashTagCount.getOrDefault(word,0)+1);
@@ -43,7 +42,7 @@ public class Explorer {
                         toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2,
                                 LinkedHashMap::new));
 
-        PrintStream file1 = new PrintStream("outFiles/top#.txt");
+        PrintStream file1 = new PrintStream("top#.txt");
         System.setOut(file1);
 
         System.out.println();
@@ -71,7 +70,7 @@ public class Explorer {
                 .collect(
                         toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2,
                                 LinkedHashMap::new));
-        PrintStream file2 = new PrintStream("outFiles/top@.txt");
+        PrintStream file2 = new PrintStream("top@.txt");
         System.setOut(file2);
 
         System.out.println();

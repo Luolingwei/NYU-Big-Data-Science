@@ -1,0 +1,23 @@
+
+Printing the top 20 most frequent 3-grams
+
+[to, go, to] : 5282
+[I, have, to] : 3960
+[I, want, to] : 3089
+[going, to, be] : 3047
+[I, wish, I] : 2790
+[I, have, a] : 2650
+[want, to, go] : 2366
+[is, going, to] : 2337
+[I'm, going, to] : 2317
+[i, have, to] : 2204
+[I, need, to] : 2116
+[looking, forward, to] : 2102
+[go, to, the] : 2002
+[a, lot, of] : 1767
+[have, to, go] : 1708
+[I, think, I] : 1707
+[to, be, a] : 1671
+[i, wish, i] : 1667
+[I, don't, know] : 1630
+[in, the, morning] : 1619

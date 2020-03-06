@@ -2,9 +2,9 @@ Lingwei Luo(lingweiluo@nyu.edu)
 
 Sumitted Documents:
 
-	1. Source code: All .java files under /Source Code/src, they are submitted for your reference, Not for running the program. 
+	1. Source code: All .java files under /Source Code/src/main/java, they are submitted for your reference, Not for running the program. 
 
-	2. Dependency files: The program relies on file "stopwords.txt". It has been included in /Source Code/src.
+	2. Dependency files: The program relies on file "stopwords.txt". It has been included in /Source Code/src/main/java.
 
 	3. "topics.txt": keywords extracted for each folder.
 

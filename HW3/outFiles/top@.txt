@@ -1,0 +1,23 @@
+
+Printing the top 20 most frequent @-mentions
+
+@mileycyrus : 2509
+@tommcfly : 2182
+@ddlovato : 1686
+@DavidArchie : 730
+@Jonasbrothers : 726
+@JonathanRKnight : 667
+@taylorswift13 : 579
+@jordanknight : 574
+@DonnieWahlberg : 565
+@mitchelmusso : 554
+@jonasbrothers : 509
+@selenagomez : 423
+@dougiemcfly : 393
+@aplusk : 351
+@peterfacinelli : 330
+@joeymcintyre : 304
+@gfalcone601 : 289
+@YoungQ : 281
+@Dannymcfly : 257
+@shaundiviney : 256

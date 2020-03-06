@@ -1,0 +1,23 @@
+
+Printing the top 20 most frequent 4-grams
+
+[I, wish, I, could] : 1050
+[to, go, to, the] : 1023
+[want, to, go, to] : 940
+[is, going, to, be] : 895
+[I, don't, want, to] : 821
+[to, go, to, work] : 811
+[you, are, on, the] : 788
+[on, the, train, or] : 775
+[are, on, the, train] : 773
+[a, day, using, www] : 773
+[add, everyone, you, are] : 773
+[followers, a, day, using] : 773
+[Once, you, add, everyone] : 773
+[the, train, or, pay] : 773
+[you, add, everyone, you] : 773
+[train, or, pay, vip] : 773
+[com, Once, you, add] : 773
+[100, followers, a, day] : 773
+[everyone, you, are, on] : 773
+[Get, 100, followers, a] : 773

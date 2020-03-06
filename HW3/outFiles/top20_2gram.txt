@@ -1,0 +1,23 @@
+
+Printing the top 20 most frequent 2-grams
+
+[in, the] : 23039
+[going, to] : 19456
+[for, the] : 17211
+[to, be] : 15782
+[to, go] : 15716
+[I, have] : 15505
+[on, the] : 15439
+[to, the] : 15190
+[have, to] : 14631
+[I, am] : 13362
+[of, the] : 12673
+[have, a] : 12552
+[to, get] : 11878
+[want, to] : 11591
+[go, to] : 10366
+[I, was] : 10310
+[at, the] : 10162
+[I, don't] : 9959
+[to, do] : 9943
+[for, a] : 9878

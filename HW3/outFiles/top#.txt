@@ -1,0 +1,23 @@
+
+Printing the top 20 most frequent hashtags
+
+#fb : 941
+#squarespace : 515
+#followfriday : 493
+#seb-day : 276
+#1 : 230
+#iranelection : 203
+#musicmonday : 178
+#marsiscoming : 164
+#fail : 161
+#BSB : 161
+#2 : 159
+#andyhurleyday : 146
+#FF : 145
+#mcflyforgermany : 144
+#myweakness : 142
+#iremember : 128
+#bgt : 117
+#FollowFriday : 113
+#ff : 111
+#trackle : 96

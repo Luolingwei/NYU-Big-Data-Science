@@ -1,103 +1,103 @@
 
 Printing the top 100 TextRank keywords for negative Tweets
 
-	I
-	I'm
-	work
 	day
 	today
-	2
-	time
 	good
-	u
-	home
-	My
+	time
+	work
 	sad
-	feel
 	night
+	home
 	bad
-	The
+	u
 	tomorrow
-	sleep
-	love
-	3
-	hate
-	But
 	lol
-	gonna
-	Just
-	tonight
-	hope
 	morning
-	bed
-	sick
-	No
 	school
-	And
-	wanna
 	week
-	It's
-	4
-	people
-	It
-	I've
-	days
-	So
-	tired
-	find
-	fun
-	long
-	lost
-	Oh
-	twitter
-	phone
-	working
-	I'll
-	wait
-	left
-	hours
-	feeling
-	watch
-	great
-	show
-	watching
-	weekend
-	missed
-	Not
-	1
-	haha
-	house
-	A
+	sick
+	bed
+	tonight
 	n
-	sucks
-	early
-	Now
-	guess
-	thought
-	You
-	man
+	days
+	people
+	fun
+	great
+	phone
+	twitter
+	weekend
+	hours
+	haha
+	tired
+	house
 	nice
-	5
-	friends
+	long
 	life
-	This
-	rain
 	year
-	car
-	ready
-	hard
-	Im
-	bit
-	missing
-	yeah
-	Why
-	yesterday
-	weather
-	wanted
-	guys
-	damn
 	ur
-	start
-	leave
-	late
+	=
+	car
+	friends
+	show
+	ready
+	man
+	yesterday
+	poor
+	rain
+	bit
+	weather
 	hot
+	big
+	sleep
+	summer
+	guys
+	friend
+	stupid
+	cold
+	happy
+	baby
+	game
+	yeah
+	love
+	hour
+	stuff
+	hard
+	party
+	movie
+	mom
+	Good
+	LOL
+	girl
+	lot
+	shit
+	head
+	r
+	wrong
+	awesome
+	job
+	food
+	news
+	hair
+	cuz
+	w
+	weeks
+	exam
+	room
+	sun
+	late
+	dad
+	iPhone
+	tho
+	times
+	family
+	class
+	Twitter
+	money
+	lunch
+	early
+	b
+	cool
+	real
+	OMG
+	headache

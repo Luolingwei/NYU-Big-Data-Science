@@ -4,6 +4,7 @@ import DataExploration.Explorer;
 import Loader.CSVLoader;
 import Ngrams.NgramFinder;
 import TextRank.KeyWordTextRank;
+import TextRank.Filter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -35,16 +36,21 @@ public class Test {
         NgramFinder ngramFinder = new NgramFinder();
         ngramFinder.outputTopNgrams(csvLoader.textList);
 
+        // extract all text, filter out unnecessary words
+        Filter filter = new Filter(csvLoader.stopWords);
+        filter.filterOut(csvLoader.textRaw);
+
+        List<List<String>> filteredAllTextList = filter.getAllText();
+        List<List<String>> negativeTextList = filter.getNegativeText(csvLoader.negativeIdx);
+        List<List<String>> positiveTextList = filter.getPositiveText(csvLoader.positiveIdx);
+
         // TextRank to find keywords
-        List<List<String>> filteredTextList = csvLoader.filterStopWords(csvLoader.textList);
-        KeyWordTextRank AllTextRank = new KeyWordTextRank(filteredTextList);
+        KeyWordTextRank AllTextRank = new KeyWordTextRank(filteredAllTextList);
         AllTextRank.outputTopList(100,"all");
 
-        List<List<String>> negativeTextList = csvLoader.readFilterTweet(filePath,"0");
         KeyWordTextRank negativeTextRank = new KeyWordTextRank(negativeTextList);
         negativeTextRank.outputTopList(100,"negative");
 
-        List<List<String>> positiveTextList = csvLoader.readFilterTweet(filePath,"4");
         KeyWordTextRank positiveTextRank = new KeyWordTextRank(positiveTextList);
         positiveTextRank.outputTopList(100,"positive");
 

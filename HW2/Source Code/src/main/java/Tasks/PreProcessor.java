@@ -47,7 +47,7 @@ public class PreProcessor {
             for (Sentence sentence: doc.sentences()){
                 List<String> validWords = new ArrayList<>();
                 for (String word : sentence.lemmas()){
-                    if (!stopWords.contains(word))
+                    if (!stopWords.contains(word.toLowerCase()))
                         validWords.add(word);
                 }
                 if (!validWords.isEmpty()){

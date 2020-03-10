@@ -24,3 +24,4 @@ How to run my program:
 		$ java -jar HW3.jar
 
 	When the program finishes, all program outputs will appear in your current path.
+	Note: if there is warnings like "SLF4JL Failed to load class....", just ignore it, the program will execute correctly. As Stanford NLP lib is used in my program, it will take very long time to execute it, it took me around 4 hours to run it on HPC.

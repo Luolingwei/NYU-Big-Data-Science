@@ -2,29 +2,17 @@
 Mini Documents Cluster Software, Author: Lingwei Luo (lingweiluo@nyu.edu)
 Please enter your parameter instructions on the command line
 ==========================================================================
-Please select clustering algorithm: (0 is K-means, 1 is K-means++) 1
+Please select clustering algorithm: (0 is K-means, 1 is K-means++) 0
 Please select similarity measure in the clustering algorithm: (0 is Euclidean, 1 is Cosine) 1
 Number of clusters k (k>=2): 3
 Absolute path to the directory containing the documents to analyze (do Not include " at both ends of the path): 
 /Users/luolingwei/Desktop/Program/Classes/BDS/NYU-Big-Data-Science/HW2/dataset_3
+We found 24 txt files in total.
 
 ==========================================================================
 Clustering Results
 ==========================================================================
 Cluster 1:
-	Files included in the cluster:
-		C4/article08.txt
-		C4/article05.txt
-		C4/article04.txt
-		C4/article06.txt
-		C4/article07.txt
-		C4/article03.txt
-		C4/article02.txt
-		C4/article01.txt
-	Top 10 Fequent keywords found in this cluster:
-		[area, face, disease, hoof_mouth, report, animal, outbreak, farmer, veterinary, hoof_mouth_disease]
-
-Cluster 2:
 	Files included in the cluster:
 		C1/article08.txt
 		C1/article05.txt
@@ -37,6 +25,19 @@ Cluster 2:
 	Top 10 Fequent keywords found in this cluster:
 		[flight, ensure, airline_safety, million, safety, service, aircraft, civil, company, airline]
 
+Cluster 2:
+	Files included in the cluster:
+		C4/article08.txt
+		C4/article05.txt
+		C4/article04.txt
+		C4/article06.txt
+		C4/article07.txt
+		C4/article03.txt
+		C4/article02.txt
+		C4/article01.txt
+	Top 10 Fequent keywords found in this cluster:
+		[area, face, disease, hoof_mouth, report, animal, outbreak, farmer, veterinary, hoof_mouth_disease]
+
 Cluster 3:
 	Files included in the cluster:
 		C7/article08.txt
@@ -48,7 +49,7 @@ Cluster 3:
 		C7/article02.txt
 		C7/article01.txt
 	Top 10 Fequent keywords found in this cluster:
-		[bank, loan, mortgage, government, rate, mortgage_rate, i, rise, percent, home]
+		[bank, loan, mortgage, government, rate, level, mortgage_rate, rise, percent, home]
 
 
 ==========================================================================

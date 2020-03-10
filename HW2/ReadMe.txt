@@ -18,4 +18,8 @@ Sumitted Documents:
 
 How to run my program: 
 
-	To run my program, simply execute java -jar HW2.jar in your terminal. Enter required parameters in terminal directly. When it finishes, 2 .png files "Clustered Tf-Idf.png" and "Tf-Idf Distribution.png" will appear in your current path. Other related results will appear in your terminal. 
+	To run my program, simply execute java -jar HW2.jar in your terminal. 
+
+	Enter required parameters in terminal directly. Using Kmeans+Cosine may produce a great clustering result. And there may be some warnings such as "Failed to load class...". That doesn't matter, the program will execute correctly.
+
+	When it finishes, 2 .png files "Clustered Tf-Idf.png" and "Tf-Idf Distribution.png" will appear in your current path. Other related clustering results will appear in your terminal. 

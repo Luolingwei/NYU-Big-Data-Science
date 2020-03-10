@@ -4,4 +4,4 @@ Topic found for Each Folder:
 
 	C4: [area, face, disease, hoof_mouth, report, animal, outbreak, farmer, veterinary, hoof_mouth_disease]
 
-	C7: [bank, loan, mortgage, government, rate, mortgage_rate, i, rise, percent, home]
+	C7: [bank, loan, mortgage, government, rate, level, mortgage_rate, rise, percent, home]

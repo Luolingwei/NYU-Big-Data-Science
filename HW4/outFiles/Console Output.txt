@@ -1,0 +1,53 @@
+==========================================================================
+Mini Documents Clustering Software, Author: Lingwei Luo (lingweiluo@nyu.edu)
+Please enter your parameter instructions on the command line
+==========================================================================
+Absolute path to the directory containing the well-labeled documents (eg: The Path/LabelC4/article01.txt)(do Not include " at both ends of the path): 
+/Users/luolingwei/Desktop/Program/Classes/BDS/NYU-Big-Data-Science/HW4/dataset_3
+Absolute path to the directory containing the documents waiting to label (eg: The Path/unknown01.txt)(do Not include " at both ends of the path): 
+/Users/luolingwei/Desktop/Program/Classes/BDS/NYU-Big-Data-Science/HW4/unknown
+We found 24 txt files in total
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+We found 10 txt files in total
+
+==========================================================================
+KNN Label Results
+==========================================================================
+unknown08.txt is labeled as C7
+unknown09.txt is labeled as C4
+unknown04.txt is labeled as C1
+unknown10.txt is labeled as C1
+unknown05.txt is labeled as C4
+unknown07.txt is labeled as C7
+unknown06.txt is labeled as C4
+unknown02.txt is labeled as C1
+unknown03.txt is labeled as C1
+unknown01.txt is labeled as C1
+
+==========================================================================
+FuzzyKNN Label Results
+==========================================================================
+unknown08.txt is labeled as follows
+C7:100.0% 
+unknown09.txt is labeled as follows
+C4:83.3% C1:16.7% 
+unknown04.txt is labeled as follows
+C1:100.0% 
+unknown10.txt is labeled as follows
+C4:33.3% C1:66.7% 
+unknown05.txt is labeled as follows
+C4:100.0% 
+unknown07.txt is labeled as follows
+C7:100.0% 
+unknown06.txt is labeled as follows
+C4:100.0% 
+unknown02.txt is labeled as follows
+C1:100.0% 
+unknown03.txt is labeled as follows
+C4:33.3% C7:16.7% C1:50.0% 
+unknown01.txt is labeled as follows
+C1:100.0% 
+
+Process finished with exit code 0
